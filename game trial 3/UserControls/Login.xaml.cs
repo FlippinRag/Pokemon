@@ -1,18 +1,10 @@
 ﻿using game_trial_3.Properties;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+
 
 namespace game_trial_3.UserControls
 {
@@ -22,13 +14,15 @@ namespace game_trial_3.UserControls
     public partial class Login : UserControl
     {
         private readonly MediaPlayer mMediaPlayer = new MediaPlayer();
+        private PlayerData playerData;
 
         public Login()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = (bool)Settings.Default["music"];
-            checkBoxMusic.Checked += CheckBoxMusic_Checked;
-            checkBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
+            playerData = new PlayerData();
+            CheckBoxMusic.IsChecked = (bool)Settings.Default["music"];
+            CheckBoxMusic.Checked += CheckBoxMusic_Checked;
+            CheckBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
             mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\Anurag Sedai\\Documents\\Codin\\C#\\game trial 3\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wav", AppDomain.CurrentDomain.BaseDirectory)));
             mMediaPlayer.MediaEnded += new EventHandler(Media_Ended);
 
@@ -64,16 +58,66 @@ namespace game_trial_3.UserControls
                 mMediaPlayer.Play();
             }
         }
-
-        private void btnLoginClick(object sender, RoutedEventArgs e)
+        
+        public class PlayerData
         {
-            MessageBox.Show("I wnat your bobs");
+            public string PlayerName { get; set; }
+            public string Password { get; set; }
+        }
+        private bool IsValidUser(string playerName, string password)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=pokemongame;UID=root;PASSWORD=root;";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT playerID FROM players WHERE playerName = @playerName AND playerPassword = @password";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@playerName", playerName);
+                    command.Parameters.AddWithValue("@password", password);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return true;
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            
+            return false;
+        }
+        
+        private void BtnLoginClick(object sender, RoutedEventArgs e)
+        {
+            playerData.PlayerName = TxtPlayer.Text;
+            playerData.Password = TxtPass.Password;
+            
+            bool isAuthenticated = IsValidUser(playerData.PlayerName, playerData.Password);
+            if (isAuthenticated)
+            {
+                mMediaPlayer.Stop();
+                ((Window)Parent).Content = new Stats(playerData);
+            }
+            else
+            {
+                
+                MessageBox.Show("Invalid credentials. Please try again.");
+            }
+            
 
         }
-
-        private void btnCloseTab(object sender, RoutedEventArgs e)
+        
+        private void BtnCloseTab(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btnGoBack(object sender, RoutedEventArgs e)
+        {
+            mMediaPlayer.Stop();
+            ((Window)Parent).Content = new MainMenu();
         }
     }
 }

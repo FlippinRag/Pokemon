@@ -1,4 +1,5 @@
-﻿using game_trial_3.Properties;
+﻿
+using game_trial_3.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,9 @@ namespace game_trial_3.UserControls
         {
             InitializeComponent();
 
-            checkBoxMusic.IsChecked = (bool)Settings.Default["music"];
-            checkBoxMusic.Checked += CheckBoxMusic_Checked;
-            checkBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
+            CheckBoxMusic.IsChecked = (bool)Settings.Default["music"];
+            CheckBoxMusic.Checked += CheckBoxMusic_Checked;
+            CheckBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
             mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\Anurag Sedai\\Documents\\Codin\\C#\\game trial 3\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wav", AppDomain.CurrentDomain.BaseDirectory)));
             mMediaPlayer.MediaEnded += new EventHandler(Media_Ended);
 
@@ -69,21 +70,21 @@ namespace game_trial_3.UserControls
             }
         }
 
-        private void btnCloseTab(object sender, RoutedEventArgs e)
+        private void BtnCloseTab(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private void btnLoginClick(object sender, RoutedEventArgs e)
+        private void BtnLoginClick(object sender, RoutedEventArgs e)
         {
             mMediaPlayer.Stop();
-           (Parent as Window).Content = new Login();
+           ((Window)Parent).Content = new Login();
         }
 
-        private void btnNewPlayer(object sender, RoutedEventArgs e)
+        private void BtnNewPlayer(object sender, RoutedEventArgs e)
         {
             mMediaPlayer.Stop();
-            (Parent as Window).Content = new Register();
+            ((Window)Parent).Content = new Register();
         }
     }
 }

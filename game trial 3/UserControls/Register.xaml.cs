@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace game_trial_3.UserControls
 {
@@ -27,9 +28,9 @@ namespace game_trial_3.UserControls
         public Register()
         {
             InitializeComponent();
-            checkBoxMusic.IsChecked = (bool)Settings.Default["music"];
-            checkBoxMusic.Checked += CheckBoxMusic_Checked;
-            checkBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
+            CheckBoxMusic.IsChecked = (bool)Settings.Default["music"];
+            CheckBoxMusic.Checked += CheckBoxMusic_Checked;
+            CheckBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
             mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\Anurag Sedai\\Documents\\Codin\\C#\\game trial 3\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wav", AppDomain.CurrentDomain.BaseDirectory)));
             mMediaPlayer.MediaEnded += new EventHandler(Media_Ended);
 
@@ -66,15 +67,76 @@ namespace game_trial_3.UserControls
             }
         }
 
-        private void btnCloseTab(object sender, RoutedEventArgs e)
+        private void BtnCloseTab(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private void btnRegisterClick(object sender, RoutedEventArgs e)
+        private void BtnRegisterClick(object sender, RoutedEventArgs e)
+        {
+            // Get the entered player name and password.
+            string playerName = NewtxtPlayer.Text;
+            string password = NewtxtPass.Password;
+
+            // Check if the player name is unique.
+            if (IsPlayerNameUnique(playerName))
+            {
+                // Insert the new player into the database.
+                if (InsertNewPlayer(playerName, password))
+                {
+                    MessageBox.Show("Registration successful!");
+                    mMediaPlayer.Stop();
+                    ((Window)Parent).Content = new Login();
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while registering the player.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Player name is already taken. Please choose a different name.");
+            }
+        }
+        
+        private bool IsPlayerNameUnique(string playerName)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=pokemongame;UID=root;PASSWORD=root";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT playerID FROM players WHERE playerName = @playerName";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@playerName", playerName);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        return !reader.Read(); // If a row is found, the name is not unique.
+                    }
+                }
+            }
+        }
+        private bool InsertNewPlayer(string playerName, string password)
+        {
+            string connectionString = "SERVER=localhost;DATABASE=pokemongame;UID=root;PASSWORD=root";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO players (playerName, playerPassword) VALUES (@playerName, @password)";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@playerName", playerName);
+                    command.Parameters.AddWithValue("@password", password);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // If at least one row is affected, the insertion was successful.
+                }
+            }
+        }
+        
+        private void BtnGoBack(object sender, RoutedEventArgs e)
         {
             mMediaPlayer.Stop();
-            (Parent as Window).Content = new Login();
+            ((Window)Parent).Content = new MainMenu();
         }
     }
 }
