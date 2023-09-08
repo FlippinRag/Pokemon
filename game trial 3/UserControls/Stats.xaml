@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:game_trial_3.UserControls"
              mc:Ignorable="d"
-             d:DesignHeight="auto" d:DesignWidth="auto">
+             d:DesignHeight="auto" d:DesignWidth="auto"
+             UseLayoutRounding="True">
     
     <Border CornerRadius="25"
             BorderThickness="3"
@@ -40,7 +40,7 @@
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Stats"
+                <TextBlock Text="Statistics"
                                Foreground="DarkGray"
                                FontSize="30"
                                Grid.Column="0"
@@ -119,7 +119,7 @@
                                 Grid.Row="1"
                                 Orientation="Vertical"
                                 Margin="0,0,0,0">
-                <DataGrid  Margin="0,100"
+                <DataGrid  Margin="0,50"
                            Name="DtGrid" 
                            ItemsSource="{Binding}"
                            IsReadOnly="True">
@@ -131,7 +131,7 @@
                            Foreground="LightGray"
                            FontSize="25"
                            FontWeight="Medium"
-                           Margin="0,60,0,0"/>
+                           Margin="0,30,0,0"/>
                 
                 
                 <Button x:Name="Start"
@@ -167,6 +167,10 @@
                     </Button.Template>
 
                 </Button>
+                
+                <Image      Source="pack://application:,,,/Images/lesago.png"
+                            Width="500" Height="500" />
+                
             </StackPanel>
         </Grid>
     </Border>

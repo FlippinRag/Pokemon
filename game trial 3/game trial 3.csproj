@@ -177,6 +177,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\lesago.png" />
     <Content Include="Music\106TheRoadToVeridianFromPallet.wav" />
     <Resource Include="Images\beauty 2.png" />
     <Resource Include="Images\beauty.png" />
