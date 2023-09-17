@@ -110,6 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\Intro.xaml" />
     <Page Include="UserControls\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,6 +131,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Intro.xaml.cs">
+      <DependentUpon>Intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -178,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\lesago.png" />
+    <Resource Include="Images\pokeball.png" />
+    <Resource Include="Images\Prof Oak.png" />
     <Content Include="Music\106TheRoadToVeridianFromPallet.wav" />
     <Resource Include="Images\beauty 2.png" />
     <Resource Include="Images\beauty.png" />

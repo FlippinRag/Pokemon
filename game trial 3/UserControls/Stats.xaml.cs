@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Windows;
 using System.Windows.Controls;
+using game_trial_3.Pages;
 using MySql.Data.MySqlClient;
 
 namespace game_trial_3.UserControls
@@ -47,7 +48,7 @@ namespace game_trial_3.UserControls
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("We almost there");
+            ((Window)Parent).Content = new Intro();
         }
     }
 }
