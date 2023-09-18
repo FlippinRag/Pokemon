@@ -183,9 +183,10 @@
   <ItemGroup>
     <Resource Include="Images\lesago.png" />
     <Resource Include="Images\pokeball.png" />
+    <Resource Include="Images\Pokemon\bulbasaur.png" />
+    <Resource Include="Images\Pokemon\charmander.png" />
     <Resource Include="Images\Prof Oak.png" />
-    <Resource Include="Images\bulbasaur.png" />
-    <Resource Include="Images\charmander.png" />
+    <Resource Include="Images\Pokemon\squirtle.png" />
     <Content Include="Music\106TheRoadToVeridianFromPallet.wav" />
     <Resource Include="Images\beauty 2.png" />
     <Resource Include="Images\beauty.png" />

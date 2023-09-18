@@ -30,13 +30,14 @@ namespace game_trial_3.Pages
         private DispatcherTimer textAnimationTimer;
         private bool isSpeechDone = false;
         private bool speechAnimationStarted = false;
+        private readonly int speechSpeed = 1; // can change how fast you want it to read the text
         
         public Intro()
         {
             InitializeComponent();
             MovingAnimation();
             textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(10); // can change how fast you want it to read the text
+            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(speechSpeed); 
             textAnimationTimer.Tick += TextAnimationTick;
             StartSpeech();
             
@@ -77,7 +78,7 @@ namespace game_trial_3.Pages
             Button bulbasaurButton = new Button();
             Image bulbasaurImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/bulbasaur.png", UriKind.RelativeOrAbsolute)),
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/bulbasaur.png", UriKind.RelativeOrAbsolute)),
             };
             bulbasaurButton.Content = bulbasaurImage;
             bulbasaurButton.Width = bulbasaurImage.Source.Width;
@@ -87,17 +88,29 @@ namespace game_trial_3.Pages
             Button charmanderButton = new Button();
             Image charmanderImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/charmander.png", UriKind.RelativeOrAbsolute))
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/charmander.png", UriKind.RelativeOrAbsolute))
             };
             charmanderButton.Content = charmanderImage;
             charmanderButton.Width = charmanderImage.Source.Width;
             charmanderButton.Height = charmanderImage.Source.Height;
             charmanderButton.Click += PokemonSelected;
             
+            Button squirtleButton = new Button();
+            Image squirtleImage = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/squirtle.png", UriKind.RelativeOrAbsolute))
+            };
+            squirtleButton.Content = squirtleImage;
+            squirtleButton.Width = squirtleImage.Source.Width;
+            squirtleButton.Height = squirtleImage.Source.Height;
+            squirtleButton.Click += PokemonSelected;
+            
+            
             ChooseYourPokemon.Children.Add(bulbasaurButton);
             ChooseYourPokemon.Children.Add(charmanderButton);
-            
-            
+            ChooseYourPokemon.Children.Add(squirtleButton);
+
+
         }
 
         private void PokemonSelected(object sender, RoutedEventArgs e) // place holder for actually using it
@@ -131,12 +144,17 @@ namespace game_trial_3.Pages
             DoubleAnimation animation = new DoubleAnimation
             {
                 From = Canvas.GetTop(Player),
-                Duration = TimeSpan.FromSeconds(0.25),
+                Duration = TimeSpan.FromMilliseconds(500),
                 AutoReverse = true, 
                 RepeatBehavior = new RepeatBehavior(4), // Choose repetitions.. yea that's it
             };
 
-            double targetTop = Canvas.GetTop(Player) + random.Next(1, 101); // Setting how far you can move them
+            animation.Completed += (sender, e) => // makes it so that it resets when done moving
+            {
+                Canvas.SetTop(Player, 100);
+            };
+            
+            double targetTop = Canvas.GetTop(Player) + random.Next(-100, 101); // Setting how far you can move them
 
             animation.To = targetTop;
 
