@@ -20,7 +20,7 @@ namespace game_trial_3.Pages
             "My name is Professor Samuel Oak",
             "Today I declare you prepared for the Battle world! :D",
             "Its not easy mind you.. BUT I THINK YOU'RE READY!!!",
-            "The last step is to CHOOSE YOUR POKEMON",
+            "The first step is to CHOOSE YOUR POKEMON",
             
         };
 
@@ -28,16 +28,14 @@ namespace game_trial_3.Pages
         private int currentSpeechIndex = 0;
         private bool isLinesDone = false;
         private DispatcherTimer textAnimationTimer;
-        private bool isSpeechDone = false;
         private bool speechAnimationStarted = false;
-        private readonly int speechSpeed = 1; // can change how fast you want it to read the text
         
         public Intro()
         {
             InitializeComponent();
             MovingAnimation();
             textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(speechSpeed); 
+            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(85); // can change how fast you want it to read the text
             textAnimationTimer.Tick += TextAnimationTick;
             StartSpeech();
             
@@ -68,7 +66,6 @@ namespace game_trial_3.Pages
             else
             {
                 textAnimationTimer.Stop();
-                isSpeechDone = true;
 
             }
         }
@@ -83,7 +80,7 @@ namespace game_trial_3.Pages
             bulbasaurButton.Content = bulbasaurImage;
             bulbasaurButton.Width = bulbasaurImage.Source.Width;
             bulbasaurButton.Height = bulbasaurImage.Source.Height;
-            bulbasaurButton.Click += PokemonSelected;
+            bulbasaurButton.Click += BulbSelected;
 
             Button charmanderButton = new Button();
             Image charmanderImage = new Image
@@ -93,7 +90,7 @@ namespace game_trial_3.Pages
             charmanderButton.Content = charmanderImage;
             charmanderButton.Width = charmanderImage.Source.Width;
             charmanderButton.Height = charmanderImage.Source.Height;
-            charmanderButton.Click += PokemonSelected;
+            charmanderButton.Click += CharSelected;
             
             Button squirtleButton = new Button();
             Image squirtleImage = new Image
@@ -103,20 +100,46 @@ namespace game_trial_3.Pages
             squirtleButton.Content = squirtleImage;
             squirtleButton.Width = squirtleImage.Source.Width;
             squirtleButton.Height = squirtleImage.Source.Height;
-            squirtleButton.Click += PokemonSelected;
+            squirtleButton.Click += SquirtSelected;
             
+            Button rioluButton = new Button();
+            Image rioluImage = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/riolu.png", UriKind.RelativeOrAbsolute))
+            };
+            rioluButton.Content = rioluImage;
+            rioluButton.Width = rioluImage.Source.Width;
+            rioluButton.Height = rioluImage.Source.Height;
+            rioluButton.Click += RioSelected;
             
             ChooseYourPokemon.Children.Add(bulbasaurButton);
             ChooseYourPokemon.Children.Add(charmanderButton);
             ChooseYourPokemon.Children.Add(squirtleButton);
+            ChooseYourPokemon.Children.Add(rioluButton);
 
 
         }
 
-        private void PokemonSelected(object sender, RoutedEventArgs e) // place holder for actually using it
+        private void BulbSelected(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("nice");
+            MessageBox.Show("nice... i lied whats wrong with you");
         }
+
+        private void CharSelected(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("nice... someones tryna beat the game fast");
+        }
+
+        private void SquirtSelected(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("nice... water bender wanna be");
+        }
+
+        private void RioSelected(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("nice... daniel");
+        }
+        
 
         private void StartSpeech() 
         {
@@ -144,17 +167,12 @@ namespace game_trial_3.Pages
             DoubleAnimation animation = new DoubleAnimation
             {
                 From = Canvas.GetTop(Player),
-                Duration = TimeSpan.FromMilliseconds(500),
+                Duration = TimeSpan.FromSeconds(0.25),
                 AutoReverse = true, 
-                RepeatBehavior = new RepeatBehavior(4), // Choose repetitions.. yea that's it
+                RepeatBehavior = new RepeatBehavior(5), // Choose repetitions.. yea that's it
             };
 
-            animation.Completed += (sender, e) => // makes it so that it resets when done moving
-            {
-                Canvas.SetTop(Player, 100);
-            };
-            
-            double targetTop = Canvas.GetTop(Player) + random.Next(-100, 101); // Setting how far you can move them
+            double targetTop = Canvas.GetTop(Player) + random.Next(-50, 101); // Setting how far you can move them
 
             animation.To = targetTop;
 
@@ -165,7 +183,8 @@ namespace game_trial_3.Pages
             storyboard.Children.Add(animation);
             storyboard.Begin(Player);
         }
-
+        
+        
         
     }
 }

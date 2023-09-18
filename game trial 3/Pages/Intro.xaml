@@ -8,7 +8,7 @@
     
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Images/pokeball.png">
+            <ImageBrush ImageSource="pack://application:,,,/Images/pokemon-professor-oak-lab-background.png">
                 
             </ImageBrush>
         </Grid.Background>
@@ -23,15 +23,23 @@
             </Image>
         </Canvas>
         
-        <TextBlock x:Name="SpeechText" Text="" 
+        <Image Source="pack://application:,,,/Images/speech bubble.png" 
+               Margin="0,300,0,0"
+               Width="1200"
+        />
+        <TextBlock x:Name="SpeechText" 
+                   Text=""
+                   Margin="0,365,0,0"
+                   Width="1100"
+                   TextWrapping="Wrap"
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center" 
                    FontSize="40"
-                   FontFamily="pack://application:,,,/#Titania"
+                   FontFamily="pack://application:,,,/Fonts/#Pokemon Classic"
                    Foreground="Fuchsia"/>
         
         <StackPanel x:Name="ChooseYourPokemon" 
-                    Margin="0,0,0,100"
+                    Margin="0,0,0,750"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center" 
                     Orientation="Horizontal"

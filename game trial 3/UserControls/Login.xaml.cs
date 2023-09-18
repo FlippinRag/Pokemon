@@ -11,8 +11,9 @@ namespace game_trial_3.UserControls
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class Login : UserControl, IDisposable
     {
+        void IDisposable.Dispose() { }
         private readonly MediaPlayer mMediaPlayer = new MediaPlayer();
         private PlayerData playerData;
 

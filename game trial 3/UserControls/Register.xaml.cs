@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using game_trial_3.Pages;
 using MySql.Data.MySqlClient;
 
 namespace game_trial_3.UserControls
@@ -20,9 +21,9 @@ namespace game_trial_3.UserControls
     /// <summary>
     /// Interaction logic for Register.xaml
     /// </summary>
-    public partial class Register : UserControl
+    public partial class Register : UserControl, IDisposable
     {
-
+        void IDisposable.Dispose() { }
         private readonly MediaPlayer mMediaPlayer = new MediaPlayer();
 
         public Register()
@@ -86,7 +87,7 @@ namespace game_trial_3.UserControls
                 {
                     MessageBox.Show("Registration successful!");
                     mMediaPlayer.Stop();
-                    ((Window)Parent).Content = new Login();
+                    ((Window)Parent).Content = new NewPlayerStart();
                 }
                 else
                 {

@@ -119,6 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\NewPlayerStart.xaml" />
     <Page Include="UserControls\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +141,9 @@
     </Compile>
     <Compile Include="UserControls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewPlayerStart.xaml.cs">
+      <DependentUpon>NewPlayerStart.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -183,10 +187,15 @@
   <ItemGroup>
     <Resource Include="Images\lesago.png" />
     <Resource Include="Images\pokeball.png" />
+    <Resource Include="Images\Prof Oak.png" />
+    <Resource Include="Fonts\Pokemon Classic.ttf" />
+    <Resource Include="Images\pokemon-professor-oak-lab-background.png" />
     <Resource Include="Images\Pokemon\bulbasaur.png" />
     <Resource Include="Images\Pokemon\charmander.png" />
-    <Resource Include="Images\Prof Oak.png" />
+    <Resource Include="Images\Pokemon\riolu.png" />
     <Resource Include="Images\Pokemon\squirtle.png" />
+    <Resource Include="Images\speech bubble.png" />
+    <Resource Include="Images\lesagooooooooooo.png" />
     <Content Include="Music\106TheRoadToVeridianFromPallet.wav" />
     <Resource Include="Images\beauty 2.png" />
     <Resource Include="Images\beauty.png" />

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using game_trial_3.Pages;
@@ -6,8 +7,9 @@ using MySql.Data.MySqlClient;
 
 namespace game_trial_3.UserControls
 {
-    public partial class Stats : UserControl
+    public partial class Stats : UserControl, IDisposable
     {
+        void IDisposable.Dispose() { }
         private Login.PlayerData _playerData;
         public Stats(Login.PlayerData playerData)
         {
@@ -48,7 +50,7 @@ namespace game_trial_3.UserControls
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
-            ((Window)Parent).Content = new Intro();
+            MessageBox.Show("going to be implemented very very soon!!!!!!!!!!!");
         }
     }
 }
