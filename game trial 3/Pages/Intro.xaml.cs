@@ -11,6 +11,7 @@ namespace game_trial_3.Pages
     public partial class Intro : Page, IDisposable
     {
         void IDisposable.Dispose() { }
+        public string SelectedStarter { get; private set; }
         private Random random = new Random();
         private List<string> Lines = new List<string>
         {
@@ -123,21 +124,30 @@ namespace game_trial_3.Pages
         private void BulbSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... i lied whats wrong with you");
+            SelectedStarter = "Bulbasaur";
+            this.Content = new Fight(SelectedStarter);
+
         }
 
         private void CharSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... someones tryna beat the game fast");
+            SelectedStarter = "Charmander";
+            this.Content = new Fight(SelectedStarter);
         }
 
         private void SquirtSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... water bender wanna be");
+            SelectedStarter = "Squirtle";
+            this.Content = new Fight(SelectedStarter);
         }
 
         private void RioSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... daniel");
+            SelectedStarter = "Riolu";
+            this.Content = new Fight(SelectedStarter);
         }
         
 

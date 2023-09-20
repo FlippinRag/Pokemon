@@ -104,7 +104,7 @@ namespace game_trial_3.UserControls
             else
             {
                 
-                MessageBox.Show("Invalid credentials. Please try again.");
+                MessageBox.Show("Wrong login. Try again please!");
             }
             
 

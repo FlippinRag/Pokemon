@@ -50,7 +50,7 @@ namespace game_trial_3.UserControls
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("going to be implemented very very soon!!!!!!!!!!!");
+            MessageBox.Show("going to be implemented very very soon!!!!!!!!!!!");   
         }
     }
 }

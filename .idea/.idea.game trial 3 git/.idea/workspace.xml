@@ -7,9 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="new player start and stuff just making the logic of the page flow correct, and added riolu">
+    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="sql changes">
+      <change afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Stats.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Stats.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/game trial 3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/game trial 3.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +91,7 @@
       <workItem from="1695027714776" duration="4535000" />
       <workItem from="1695069213803" duration="3711000" />
       <workItem from="1695075171024" duration="731000" />
-      <workItem from="1695237446100" duration="1224000" />
+      <workItem from="1695237446100" duration="4580000" />
     </task>
     <task id="LOCAL-00001" summary="new player start and stuff just making the logic of the page flow correct, and added riolu">
       <option name="closed" value="true" />
@@ -103,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695237495481</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sql changes">
+      <option name="closed" value="true" />
+      <created>1695240263270</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695240263270</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +137,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new player start and stuff just making the logic of the page flow correct, and added riolu" />
-    <option name="LAST_COMMIT_MESSAGE" value="new player start and stuff just making the logic of the page flow correct, and added riolu" />
+    <MESSAGE value="sql changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql changes" />
   </component>
 </project>

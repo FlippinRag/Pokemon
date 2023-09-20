@@ -110,6 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\Fight.xaml" />
     <Page Include="Pages\Intro.xaml" />
     <Page Include="UserControls\Login.xaml">
       <SubType>Designer</SubType>
@@ -132,6 +133,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Fight.xaml.cs">
+      <DependentUpon>Fight.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Intro.xaml.cs">
       <DependentUpon>Intro.xaml</DependentUpon>
