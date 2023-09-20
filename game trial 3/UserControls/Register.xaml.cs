@@ -85,18 +85,18 @@ namespace game_trial_3.UserControls
                 // Insert the new player into the database.
                 if (InsertNewPlayer(playerName, password))
                 {
-                    MessageBox.Show("Registration successful!");
+                    MessageBox.Show($"Success! You have now been registered. Welcome {playerName}");
                     mMediaPlayer.Stop();
                     ((Window)Parent).Content = new NewPlayerStart();
                 }
                 else
                 {
-                    MessageBox.Show("An error occurred while registering the player.");
+                    MessageBox.Show("Error has occured when inserting new player");
                 }
             }
             else
             {
-                MessageBox.Show("Player name is already taken. Please choose a different name.");
+                MessageBox.Show($"{playerName} is already taken, use a different one!");
             }
         }
         
@@ -106,10 +106,9 @@ namespace game_trial_3.UserControls
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT playerID FROM players WHERE playerName = @playerName";
+                string query = $"SELECT playerID FROM players WHERE playerName = '{playerName}'";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@playerName", playerName);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         return !reader.Read(); // If a row is found, the name is not unique.
@@ -123,13 +122,11 @@ namespace game_trial_3.UserControls
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO players (playerName, playerPassword) VALUES (@playerName, @password)";
+                string query = $"INSERT INTO players (playerName, playerPassword) VALUES ('{playerName}','{password}')";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@playerName", playerName);
-                    command.Parameters.AddWithValue("@password", password);
-                    int rowsAffected = command.ExecuteNonQuery();
-                    return rowsAffected > 0; // If at least one row is affected, the insertion was successful.
+                    int rowsChanged = command.ExecuteNonQuery();
+                    return rowsChanged > 0; // If at least one row is changed inserting worked
                 }
             }
         }
