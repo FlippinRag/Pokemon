@@ -115,7 +115,7 @@ namespace game_trial_3.UserControls
             Application.Current.Shutdown();
         }
 
-        private void btnGoBack(object sender, RoutedEventArgs e)
+        private void BtnGoBack(object sender, RoutedEventArgs e)
         {
             mMediaPlayer.Stop();
             ((Window)Parent).Content = new MainMenu();

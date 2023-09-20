@@ -36,7 +36,7 @@ namespace game_trial_3.Pages
             InitializeComponent();
             MovingAnimation();
             textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(85); // can change how fast you want it to read the text
+            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(1); // can change how fast you want it to read the text
             textAnimationTimer.Tick += TextAnimationTick;
             StartSpeech();
             

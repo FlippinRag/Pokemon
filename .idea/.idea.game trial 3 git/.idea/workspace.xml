@@ -7,10 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="sql changes">
-      <change afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" afterDir="false" />
+    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/game trial 3/Fonts/Pokemon Classic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/riolu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/Images/lesagooooooooooo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/Images/pokemon-professor-oak-lab-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/Images/speech bubble.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/UserControls/NewPlayerStart.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game trial 3/UserControls/NewPlayerStart.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/bulbasaur.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/bulbasaur.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/charmander.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/charmander.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/squirtle.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/squirtle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" afterDir="false" />
@@ -25,7 +34,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -90,40 +98,12 @@
       <workItem from="1695023732237" duration="204000" />
       <workItem from="1695027714776" duration="4535000" />
       <workItem from="1695069213803" duration="3711000" />
-      <workItem from="1695075171024" duration="731000" />
-      <workItem from="1695237446100" duration="4580000" />
     </task>
-    <task id="LOCAL-00001" summary="new player start and stuff just making the logic of the page flow correct, and added riolu">
-      <option name="closed" value="true" />
-      <created>1695075276914</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1695075276914</updated>
-    </task>
-    <task id="LOCAL-00002" summary="new player start and stuff just making the logic of the page flow correct, and added riolu">
-      <option name="closed" value="true" />
-      <created>1695237495481</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1695237495481</updated>
-    </task>
-    <task id="LOCAL-00003" summary="sql changes">
-      <option name="closed" value="true" />
-      <created>1695240263270</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1695240263270</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -134,10 +114,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="new player start and stuff just making the logic of the page flow correct, and added riolu" />
-    <MESSAGE value="sql changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="sql changes" />
   </component>
 </project>

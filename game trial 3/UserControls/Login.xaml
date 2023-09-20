@@ -54,7 +54,7 @@
                         FontSize="12"
                         Cursor="Hand"
                         Grid.Column="1"
-                        Click="btnGoBack">
+                        Click="BtnGoBack">
 
                     <Button.Style>
                         <Style TargetType="Button">

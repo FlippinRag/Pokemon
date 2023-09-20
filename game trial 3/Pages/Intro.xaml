@@ -40,7 +40,7 @@
         
         <StackPanel x:Name="ChooseYourPokemon" 
                     Margin="0,0,0,750"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Top"
                     HorizontalAlignment="Center" 
                     Orientation="Horizontal"
         >
