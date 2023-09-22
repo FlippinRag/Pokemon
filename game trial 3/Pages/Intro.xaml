@@ -24,12 +24,12 @@
         </Canvas>
         
         <Image Source="pack://application:,,,/Images/speech bubble.png" 
-               Margin="0,300,0,0"
+               Margin="0,400,0,0"
                Width="1200"
         />
         <TextBlock x:Name="SpeechText" 
                    Text=""
-                   Margin="0,365,0,0"
+                   Margin="10,465,0,0"
                    Width="1100"
                    TextWrapping="Wrap"
                    HorizontalAlignment="Center" 
@@ -39,10 +39,11 @@
                    Foreground="Fuchsia"/>
         
         <StackPanel x:Name="ChooseYourPokemon" 
-                    Margin="0,0,0,750"
-                    VerticalAlignment="Top"
+                    Margin="0,0,0,550"
+                    VerticalAlignment="Bottom"
                     HorizontalAlignment="Center" 
                     Orientation="Horizontal"
+                    
         >
         </StackPanel>
     </Grid>

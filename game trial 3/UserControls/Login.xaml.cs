@@ -20,12 +20,15 @@ namespace game_trial_3.UserControls
         public Login()
         {
             InitializeComponent();
+            
             playerData = new PlayerData();
+            
             CheckBoxMusic.IsChecked = (bool)Settings.Default["music"];
             CheckBoxMusic.Checked += CheckBoxMusic_Checked;
             CheckBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
             mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\Anurag Sedai\\Documents\\Codin\\C#\\game trial 3\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wav", AppDomain.CurrentDomain.BaseDirectory)));
             mMediaPlayer.MediaEnded += new EventHandler(Media_Ended);
+            
 
 
 
@@ -71,7 +74,10 @@ namespace game_trial_3.UserControls
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT playerID FROM players WHERE playerName = @playerName AND playerPassword = @password";
+                string query = "SELECT playerID " +
+                               "FROM players " +
+                               "WHERE playerName = @playerName " +
+                               "AND playerPassword = @password";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@playerName", playerName);
@@ -89,6 +95,8 @@ namespace game_trial_3.UserControls
             
             return false;
         }
+        
+        
         
         private void BtnLoginClick(object sender, RoutedEventArgs e)
         {
