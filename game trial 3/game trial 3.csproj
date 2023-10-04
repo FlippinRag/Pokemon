@@ -134,6 +134,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Encrypt.cs" />
     <Compile Include="Pages\Fight.xaml.cs">
       <DependentUpon>Fight.xaml</DependentUpon>
     </Compile>
@@ -200,6 +201,9 @@
     <Resource Include="Images\Pokemon\squirtle.png" />
     <Resource Include="Images\speech bubble.png" />
     <Resource Include="Images\lesagooooooooooo.png" />
+    <Resource Include="..\..\testoooo\testoooo\fighting background.png">
+      <Link>Images\fighting background.png</Link>
+    </Resource>
     <Content Include="Music\106TheRoadToVeridianFromPallet.wav" />
     <Resource Include="Images\beauty 2.png" />
     <Resource Include="Images\beauty.png" />

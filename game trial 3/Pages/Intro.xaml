@@ -14,7 +14,7 @@
         </Grid.Background>
         <Canvas x:Name="GameScreen" Focusable="True">
             <Image Source="pack://application:,,,/Images/Prof Oak.png" 
-                   x:Name="Player" 
+                   x:Name="oak" 
                    Canvas.Right="100" 
                    Canvas.Top="50"
                    Width="750" 

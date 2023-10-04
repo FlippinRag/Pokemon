@@ -193,10 +193,7 @@
                       Foreground="LightGray" Height="442" Width="559"/>
 
             </StackPanel>
-
-
-
-
+            
         </Grid>
     </Border>
 </UserControl>

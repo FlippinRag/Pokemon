@@ -5,8 +5,105 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:game_trial_3.Pages"
       mc:Ignorable="d"
-      Title="Fight" Height="450" Width="800">
-    <Grid>
+      Title="Fight" Height="auto" Width="auto">
+     <Grid x:Name="Grid">
+        <Grid.Background>
+            <ImageBrush x:Name="Background" ImageSource="pack://application:,,,/Images/fighting background.png"></ImageBrush>
+        </Grid.Background>
+        
+        <Canvas>
+            <Image x:Name="oak" Source="pack://application:,,,/Images/Prof Oak.png" 
+                   Visibility="Collapsed" 
+                   Canvas.Right="100" 
+                   Canvas.Top="50"
+                   Width="1000" 
+                   Height="1000"/>
+            
+            <Image x:Name="SpeechBubble" Source="pack://application:,,,/Images/speech bubble.png" 
+                   Margin="100,500,0,0"
+                   Width="1500"
+                   Visibility="Collapsed"
+            />
+            <TextBlock x:Name="SpeechText" 
+                       Text=""
+                       Margin="150,700,0,0"
+                       Width="1400"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontSize="50"
+                       FontFamily="pack://application:,,,/Fonts/#Pokemon Classic"
+                       Foreground="Fuchsia"
+                       Visibility="Collapsed"/>
+            
+            <Button x:Name="Tutorial"
+                    BorderThickness="0"
+                    Content="Yes!"
+                    Foreground="Black"
+                    FontSize="35"
+                    Cursor="Hand"
+                    Margin="500,400,0,0"
+                    Visibility="Collapsed"
+                    FontFamily="pack://application:,,,/Fonts/#Pokemon Classic"
+                    Click="TutorialClick">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Wheat"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="WhiteSmoke" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="100"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+            <Button x:Name="NoTutorial"
+                    BorderThickness="0"
+                    Content="No!"
+                    Foreground="Black"
+                    FontSize="35"
+                    Cursor="Hand"
+                    Margin="700,400,0,0"
+                    Visibility="Collapsed"
+                    FontFamily="pack://application:,,,/Fonts/#Pokemon Classic"
+                    Click="NoTutorialClick">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Wheat"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="WhiteSmoke" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="100"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+        </Canvas>
         
     </Grid>
 </Page>

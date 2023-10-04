@@ -36,7 +36,7 @@ namespace game_trial_3.Pages
             InitializeComponent();
             MovingAnimation();
             textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(85); // can change how fast you want it to read the text
+            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(0.1); // can change how fast you want it to read the text
             textAnimationTimer.Tick += TextAnimationTick;
             StartSpeech();
             
@@ -125,7 +125,7 @@ namespace game_trial_3.Pages
         {
             MessageBox.Show("nice... i lied whats wrong with you");
             SelectedStarter = "Bulbasaur";
-            this.Content = new Fight(SelectedStarter);
+            ((Window)Parent).Content = new Fight(SelectedStarter);
 
         }
 
@@ -133,21 +133,21 @@ namespace game_trial_3.Pages
         {
             MessageBox.Show("nice... someones tryna beat the game fast");
             SelectedStarter = "Charmander";
-            this.Content = new Fight(SelectedStarter);
+            ((Window)Parent).Content = new Fight(SelectedStarter);
         }
 
         private void SquirtSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... water bender wanna be");
             SelectedStarter = "Squirtle";
-            this.Content = new Fight(SelectedStarter);
+            ((Window)Parent).Content = new Fight(SelectedStarter);
         }
 
         private void RioSelected(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("nice... daniel");
             SelectedStarter = "Riolu";
-            this.Content = new Fight(SelectedStarter);
+            ((Window)Parent).Content = new Fight(SelectedStarter);
         }
         
 
@@ -176,22 +176,22 @@ namespace game_trial_3.Pages
         {
             DoubleAnimation animation = new DoubleAnimation
             {
-                From = Canvas.GetTop(Player),
+                From = Canvas.GetTop(oak),
                 Duration = TimeSpan.FromSeconds(0.25),
                 AutoReverse = true, 
                 RepeatBehavior = new RepeatBehavior(5), // Choose repetitions.. yea that's it
             };
 
-            double targetTop = Canvas.GetTop(Player) + random.Next(-50, 101); // Setting how far you can move them
+            double targetTop = Canvas.GetTop(oak) + random.Next(-50, 101); // Setting how far you can move them
 
             animation.To = targetTop;
 
-            Storyboard.SetTarget(animation, Player);
+            Storyboard.SetTarget(animation, oak);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.TopProperty));
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation);
-            storyboard.Begin(Player);
+            storyboard.Begin(oak);
         }
         
         
