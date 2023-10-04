@@ -24,11 +24,9 @@ namespace game_trial_3.UserControls
             string query = "SELECT pokemonName, xp " +
                            "FROM pokemon, players " +
                            "WHERE pokemon.playerID = players.playerID " +
-                           "AND players.playerName = @PlayerName " +
-                           "AND players.playerPassword = @PlayerPassword;";
+                           "AND players.playerName = @PlayerName ";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@PlayerName", _playerData.PlayerName);
-            cmd.Parameters.AddWithValue("@PlayerPassword", _playerData.Password);
             connection.Open();
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());

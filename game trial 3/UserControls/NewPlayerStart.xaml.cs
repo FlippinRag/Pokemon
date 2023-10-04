@@ -1,11 +1,13 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using game_trial_3.Pages;
 
 namespace game_trial_3.UserControls
 {
-    public partial class NewPlayerStart : UserControl
+    public partial class NewPlayerStart : UserControl, IDisposable
     {
+        void IDisposable.Dispose() { }
         public NewPlayerStart()
         {
             InitializeComponent();

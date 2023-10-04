@@ -103,7 +103,7 @@ namespace game_trial_3.UserControls
             playerData.PlayerName = TxtPlayer.Text;
             playerData.Password = TxtPass.Password;
             
-            bool isAuthenticated = IsValidUser(playerData.PlayerName, playerData.Password);
+            bool isAuthenticated = IsValidUser(playerData.PlayerName, Encrypt.HashString(playerData.Password));
             if (isAuthenticated)
             {
                 mMediaPlayer.Stop();

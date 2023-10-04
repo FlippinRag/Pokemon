@@ -75,29 +75,34 @@ namespace game_trial_3.UserControls
 
         private void BtnRegisterClick(object sender, RoutedEventArgs e)
         {
-            // Get the entered player name and password.
             string playerName = NewtxtPlayer.Text;
             string password = NewtxtPass.Password;
-
-            // Check if the player name is unique.
-            if (IsPlayerNameUnique(playerName))
+            if (playerName.Length < 3 || password.Length < 3)
             {
-                // Insert the new player into the database.
-                if (InsertNewPlayer(playerName, password))
-                {
-                    MessageBox.Show("Registration successful!");
-                    mMediaPlayer.Stop();
-                    ((Window)Parent).Content = new NewPlayerStart();
-                }
-                else
-                {
-                    MessageBox.Show("An error occurred while registering the player.");
-                }
+                MessageBox.Show("Either Player name or password is less than 3 characters... too short try again!");
             }
             else
             {
-                MessageBox.Show("Player name is already taken. Please choose a different name.");
+                if (IsPlayerNameUnique(playerName))
+                {
+                    // Insert the new player into the database.
+                    if (InsertNewPlayer(playerName, Encrypt.HashString(password)))
+                    {
+                        MessageBox.Show("Registration successful!");
+                        mMediaPlayer.Stop();
+                        ((Window)Parent).Content = new NewPlayerStart();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error occurred while registering the player.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Player name is already taken. Please choose a different name.");
+                }
             }
+            
         }
         
         private bool IsPlayerNameUnique(string playerName)
