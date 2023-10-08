@@ -34,7 +34,7 @@ namespace game_trial_3.UserControls
             CheckBoxMusic.IsChecked = (bool)Settings.Default["music"];
             CheckBoxMusic.Checked += CheckBoxMusic_Checked;
             CheckBoxMusic.Unchecked += CheckBoxMusic_Unchecked;
-            mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\Anurag Sedai\\Documents\\Codin\\C#\\game trial 3\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wav", AppDomain.CurrentDomain.BaseDirectory)));
+            mMediaPlayer.Open(new Uri(string.Format("C:\\Users\\sedai\\RiderProjects\\Pokemon\\game trial 3\\Music\\106TheRoadToVeridianFromPallet.wava", AppDomain.CurrentDomain.BaseDirectory)));
             mMediaPlayer.MediaEnded += new EventHandler(Media_Ended);
 
             

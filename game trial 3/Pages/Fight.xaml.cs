@@ -14,11 +14,10 @@ namespace game_trial_3.Pages
     {
         public string SelectedStarter { get; private set; }
         private Random random = new Random();
-        private readonly List<string> Lines = new List<string>
+        private readonly List<string> tutorial = new List<string>
         {
             "Hello! Its me again",
-            "would you like a brief tutorial on how to play the game?",
-            "asdasd"
+            "would you like a brief tutorial on how to play the game?"
         };
 
         private int currentLinesIndex = 0;
@@ -40,7 +39,7 @@ namespace game_trial_3.Pages
             
             MovingAnimation();
             textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(50);
+            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(85);
             textAnimationTimer.Tick += TextAnimationTickWrapper;
             StartSpeech();
             
@@ -53,14 +52,14 @@ namespace game_trial_3.Pages
 
         private async Task TextAnimationTick()
         {
-            if (currentLinesIndex < Lines.Count)
+            if (currentLinesIndex < tutorial.Count)
             {
                 if (!isLinesDone)
                 {
                     SpeechText.Text = "";
                     isLinesDone = true;
                 }
-                string currentSentence = Lines[currentLinesIndex];
+                string currentSentence = tutorial[currentLinesIndex];
                 if (currentSpeechIndex < currentSentence.Length)
                 {
                     SpeechText.Text += currentSentence[currentSpeechIndex];
@@ -134,7 +133,7 @@ namespace game_trial_3.Pages
             {
                 textAnimationTimer.Tick += (sender, e) =>
                 {
-                    if (currentLinesIndex >= Lines.Count) 
+                    if (currentLinesIndex >= tutorial.Count) 
                     {
                         textAnimationTimer.Stop();
 

@@ -135,6 +135,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Encrypt.cs" />
+    <Compile Include="oakSpeaking.cs" />
     <Compile Include="Pages\Fight.xaml.cs">
       <DependentUpon>Fight.xaml</DependentUpon>
     </Compile>

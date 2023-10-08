@@ -2,17 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using game_trial_3.Pages;
 
 namespace game_trial_3.Pages
 {
     public partial class Intro : Page, IDisposable
     {
         void IDisposable.Dispose() { }
+        
         public string SelectedStarter { get; private set; }
         private Random random = new Random();
+        private OakSpeaking oakSpeaking;
         private List<string> Lines = new List<string>
         {
             "I think so...",
@@ -25,100 +29,81 @@ namespace game_trial_3.Pages
             
         };
 
-        private int currentLinesIndex = 0;
-        private int currentSpeechIndex = 0;
-        private bool isLinesDone = false;
-        private DispatcherTimer textAnimationTimer;
-        private bool speechAnimationStarted = false;
-        
         public Intro()
         {
             InitializeComponent();
+            oakSpeaking = new OakSpeaking(Lines);
+            oakSpeaking.OnSpeechUpdated += HandleSpeechUpdated;
+            oakSpeaking.StartSpeech();
             MovingAnimation();
-            textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(0.1); // can change how fast you want it to read the text
-            textAnimationTimer.Tick += TextAnimationTick;
-            StartSpeech();
-            
         }
-        private void TextAnimationTick(object sender, EventArgs e)
+
+        private void HandleSpeechUpdated(object sender, string currentCharacter)
         {
-            if (currentLinesIndex < Lines.Count)
+            if (string.IsNullOrEmpty(currentCharacter))
             {
-                if (!isLinesDone)
-                {
-                    SpeechText.Text = ""; // Clear current line
-                    isLinesDone = true;
-                }
-                string currentSentence = Lines[currentLinesIndex];
-                if (currentSpeechIndex < currentSentence.Length)
-                {
-                    SpeechText.Text += currentSentence[currentSpeechIndex];
-                    currentSpeechIndex++;
-                }
-                else
-                {
-                    isLinesDone = false;
-                    currentLinesIndex++;
-                    currentSpeechIndex = 0;
-                    StartSpeech();
-                }
+                SpeechText.Text = string.Empty;
             }
             else
             {
-                textAnimationTimer.Stop();
-
+                SpeechText.Text += currentCharacter;
             }
         }
-    
+        
         private void CreatePokemonButtons() // creates buttons for the pokemon and assigns them a place in the stack panel
         {
             Button bulbasaurButton = new Button();
             Image bulbasaurImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/bulbasaur.png", UriKind.RelativeOrAbsolute)),
+                Stretch = Stretch.None
             };
+            ChooseYourPokemon.Children.Add(bulbasaurButton);
             bulbasaurButton.Content = bulbasaurImage;
             bulbasaurButton.Width = bulbasaurImage.Source.Width;
             bulbasaurButton.Height = bulbasaurImage.Source.Height;
+            bulbasaurButton.Background = Brushes.Transparent;
             bulbasaurButton.Click += BulbSelected;
 
             Button charmanderButton = new Button();
             Image charmanderImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/charmander.png", UriKind.RelativeOrAbsolute))
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/charmander.png", UriKind.RelativeOrAbsolute)),
+                Stretch = Stretch.None
             };
+            ChooseYourPokemon.Children.Add(charmanderButton);
             charmanderButton.Content = charmanderImage;
             charmanderButton.Width = charmanderImage.Source.Width;
             charmanderButton.Height = charmanderImage.Source.Height;
+            charmanderButton.Background = Brushes.Transparent;
             charmanderButton.Click += CharSelected;
             
             Button squirtleButton = new Button();
             Image squirtleImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/squirtle.png", UriKind.RelativeOrAbsolute))
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/squirtle.png", UriKind.RelativeOrAbsolute)),
+                Stretch = Stretch.None  
             };
+            ChooseYourPokemon.Children.Add(squirtleButton);
             squirtleButton.Content = squirtleImage;
             squirtleButton.Width = squirtleImage.Source.Width;
             squirtleButton.Height = squirtleImage.Source.Height;
+            squirtleButton.Background = Brushes.Transparent;
             squirtleButton.Click += SquirtSelected;
             
             Button rioluButton = new Button();
             Image rioluImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/riolu.png", UriKind.RelativeOrAbsolute))
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/riolu.png", UriKind.RelativeOrAbsolute)),
+                Stretch = Stretch.None
             };
+            ChooseYourPokemon.Children.Add(rioluButton);
             rioluButton.Content = rioluImage;
             rioluButton.Width = rioluImage.Source.Width;
             rioluButton.Height = rioluImage.Source.Height;
+            rioluButton.Background = Brushes.Transparent;
             rioluButton.Click += RioSelected;
             
-            ChooseYourPokemon.Children.Add(bulbasaurButton);
-            ChooseYourPokemon.Children.Add(charmanderButton);
-            ChooseYourPokemon.Children.Add(squirtleButton);
-            ChooseYourPokemon.Children.Add(rioluButton);
-
-
         }
 
         private void BulbSelected(object sender, RoutedEventArgs e)
@@ -150,28 +135,6 @@ namespace game_trial_3.Pages
             ((Window)Parent).Content = new Fight(SelectedStarter);
         }
         
-
-        private void StartSpeech() 
-        {
-            textAnimationTimer.Start();
-            MovingAnimation();
-            
-            if (!speechAnimationStarted) //checks if the speech started or not
-            {
-                textAnimationTimer.Tick += (sender, e) =>
-                {
-                    if (currentLinesIndex >= Lines.Count) // once speech has ended the buttons can now be made!!
-                    {
-                        textAnimationTimer.Stop();
-                        CreatePokemonButtons();
-                    }
-                };
-
-                speechAnimationStarted = true;
-            }
-            
-        }
-        
         private void MovingAnimation() // adds oak moving to make it look cool
         {
             DoubleAnimation animation = new DoubleAnimation
@@ -193,8 +156,5 @@ namespace game_trial_3.Pages
             storyboard.Children.Add(animation);
             storyboard.Begin(oak);
         }
-        
-        
-        
     }
 }

@@ -16,17 +16,17 @@
                    Visibility="Collapsed" 
                    Canvas.Right="100" 
                    Canvas.Top="50"
-                   Width="1000" 
-                   Height="1000"/>
+                   Width="700" 
+                   Height="700"/>
             
             <Image x:Name="SpeechBubble" Source="pack://application:,,,/Images/speech bubble.png" 
-                   Margin="100,500,0,0"
+                   Margin="100,300,0,0"
                    Width="1500"
                    Visibility="Collapsed"
             />
             <TextBlock x:Name="SpeechText" 
                        Text=""
-                       Margin="150,700,0,0"
+                       Margin="150,500,0,0"
                        Width="1400"
                        TextWrapping="Wrap"
                        HorizontalAlignment="Center" 
