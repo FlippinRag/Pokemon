@@ -7,22 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="som progress wid tutorial">
-      <change afterPath="$PROJECT_DIR$/game trial 3/oakSpeaking.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/bulbasaur.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/bulbasaur.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/charmander.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/charmander.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/riolu.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/riolu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Images/Pokemon/squirtle.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/Pokemon/squirtle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Images/speech bubble.png" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Images/speech bubble.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/MainMenu.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/MainMenu.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/UserControls/Register.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game trial 3/game trial 3.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/game trial 3.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="som progress wid tutorial" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
