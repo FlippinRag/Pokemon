@@ -26,9 +26,10 @@ namespace game_trial_3.Pages
             "Today I declare you prepared for the Battle world! :D",
             "Its not easy mind you.. BUT I THINK YOU'RE READY!!!",
             "The first step is to CHOOSE YOUR POKEMON",
-            
         };
 
+        private DispatcherTimer checkSpeechDoneTimer;
+        
         public Intro()
         {
             InitializeComponent();
@@ -36,11 +37,25 @@ namespace game_trial_3.Pages
             oakSpeaking.OnSpeechUpdated += HandleSpeechUpdated;
             oakSpeaking.StartSpeech();
             MovingAnimation();
+            
+            checkSpeechDoneTimer = new DispatcherTimer();
+            checkSpeechDoneTimer.Interval = TimeSpan.FromMilliseconds(100);
+            checkSpeechDoneTimer.Tick += CheckSpeechDone;
+            checkSpeechDoneTimer.Start();
+        }
+
+        private void CheckSpeechDone(object sender, EventArgs e)
+        {
+            if (oakSpeaking.SpeechDone)
+            {
+                checkSpeechDoneTimer.Stop();
+                CreatePokemonButtons();
+            }
         }
 
         private void HandleSpeechUpdated(object sender, string currentCharacter)
         {
-            if (string.IsNullOrEmpty(currentCharacter))
+            if (string.IsNullOrEmpty(currentCharacter) && oakSpeaking.currentLinesIndex < Lines.Count - 1)
             {
                 SpeechText.Text = string.Empty;
             }
@@ -49,66 +64,62 @@ namespace game_trial_3.Pages
                 SpeechText.Text += currentCharacter;
             }
         }
-        
+    
         private void CreatePokemonButtons() // creates buttons for the pokemon and assigns them a place in the stack panel
         {
             Button bulbasaurButton = new Button();
             Image bulbasaurImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/bulbasaur.png", UriKind.RelativeOrAbsolute)),
-                Stretch = Stretch.None
             };
-            ChooseYourPokemon.Children.Add(bulbasaurButton);
             bulbasaurButton.Content = bulbasaurImage;
             bulbasaurButton.Width = bulbasaurImage.Source.Width;
             bulbasaurButton.Height = bulbasaurImage.Source.Height;
-            bulbasaurButton.Background = Brushes.Transparent;
             bulbasaurButton.Click += BulbSelected;
 
             Button charmanderButton = new Button();
             Image charmanderImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/charmander.png", UriKind.RelativeOrAbsolute)),
-                Stretch = Stretch.None
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/charmander.png", UriKind.RelativeOrAbsolute))
             };
-            ChooseYourPokemon.Children.Add(charmanderButton);
             charmanderButton.Content = charmanderImage;
             charmanderButton.Width = charmanderImage.Source.Width;
             charmanderButton.Height = charmanderImage.Source.Height;
-            charmanderButton.Background = Brushes.Transparent;
             charmanderButton.Click += CharSelected;
             
             Button squirtleButton = new Button();
             Image squirtleImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/squirtle.png", UriKind.RelativeOrAbsolute)),
-                Stretch = Stretch.None  
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/squirtle.png", UriKind.RelativeOrAbsolute))
             };
-            ChooseYourPokemon.Children.Add(squirtleButton);
             squirtleButton.Content = squirtleImage;
             squirtleButton.Width = squirtleImage.Source.Width;
             squirtleButton.Height = squirtleImage.Source.Height;
-            squirtleButton.Background = Brushes.Transparent;
             squirtleButton.Click += SquirtSelected;
             
             Button rioluButton = new Button();
             Image rioluImage = new Image
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/riolu.png", UriKind.RelativeOrAbsolute)),
-                Stretch = Stretch.None
+                Source = new BitmapImage(new Uri("pack://application:,,,/Images/Pokemon/riolu.png", UriKind.RelativeOrAbsolute))
             };
-            ChooseYourPokemon.Children.Add(rioluButton);
             rioluButton.Content = rioluImage;
             rioluButton.Width = rioluImage.Source.Width;
             rioluButton.Height = rioluImage.Source.Height;
-            rioluButton.Background = Brushes.Transparent;
             rioluButton.Click += RioSelected;
             
+            ChooseYourPokemon.Children.Add(bulbasaurButton);
+            ChooseYourPokemon.Children.Add(charmanderButton);
+            ChooseYourPokemon.Children.Add(squirtleButton);
+            ChooseYourPokemon.Children.Add(rioluButton);
+
+
         }
+        
+        
 
         private void BulbSelected(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("nice... i lied whats wrong with you");
+            MessageBox.Show("nice... i lied who picks bulbasaur");
             SelectedStarter = "Bulbasaur";
             ((Window)Parent).Content = new Fight(SelectedStarter);
 
@@ -123,7 +134,7 @@ namespace game_trial_3.Pages
 
         private void SquirtSelected(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("nice... water bender wanna be");
+            MessageBox.Show("nice... pretty mid choice ngl");
             SelectedStarter = "Squirtle";
             ((Window)Parent).Content = new Fight(SelectedStarter);
         }
@@ -134,6 +145,9 @@ namespace game_trial_3.Pages
             SelectedStarter = "Riolu";
             ((Window)Parent).Content = new Fight(SelectedStarter);
         }
+        
+
+        
         
         private void MovingAnimation() // adds oak moving to make it look cool
         {

@@ -7,7 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="som progress wid tutorial" />
+    <list default="true" id="ff606863-b41e-43a1-96a5-e9298e7281b4" name="Changes" comment="som progress wid tutorial">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/shelf/Uncommitted_changes_before_Update_at_05_10_2023_10_03_am_[Changes]/pokemon battle background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/shelf/Uncommitted_changes_before_Update_at_05_10_2023_10_03_am_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/shelf/Uncommitted_changes_before_Update_at_05_10_2023_10_03_am__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.game trial 3 git/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Encrypt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Encrypt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game trial 3/oakSpeaking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/game trial 3/oakSpeaking.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,15 +26,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/sedai/RiderProjects/Pokemon/game trial 3/Pages/Fight.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/5a/79c3ed2e/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/game trial 3/Pages/Fight.xaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/sedai/RiderProjects/Pokemon/game trial 3/Pages/Fight.xaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/game trial 3/Pages/Fight.xaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/game trial 3/Pages/Intro.xaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/game trial 3/UserControls/Login.xaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/game trial 3/UserControls/Register.xaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -102,6 +108,11 @@
       <workItem from="1696458384436" duration="3296000" />
       <workItem from="1696528350306" duration="5273000" />
       <workItem from="1696579357155" duration="3197000" />
+      <workItem from="1697184050146" duration="1690000" />
+      <workItem from="1697191366319" duration="90000" />
+      <workItem from="1697194253116" duration="1173000" />
+      <workItem from="1697379384753" duration="564000" />
+      <workItem from="1697380497375" duration="326000" />
     </task>
     <task id="LOCAL-00001" summary="som progress wid tutorial">
       <option name="closed" value="true" />

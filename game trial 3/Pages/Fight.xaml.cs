@@ -14,88 +14,59 @@ namespace game_trial_3.Pages
     {
         public string SelectedStarter { get; private set; }
         private Random random = new Random();
-        private readonly List<string> tutorial = new List<string>
+        private readonly List<string> tutorialQuestion = new List<string>
         {
             "Hello! Its me again",
             "would you like a brief tutorial on how to play the game?"
         };
+        private readonly List<string> tutorial = new List<string>
+        {
+            "Alrighty!",
+            "Let me BRIEFLY explain how to play the game!",
+        };
 
-        private int currentLinesIndex = 0;
-        private int currentSpeechIndex = 0;
-        private bool isLinesDone = false;
-        private DispatcherTimer textAnimationTimer;
-        private bool speechAnimationStarted = false;
-        private int lastTutorialLineIndex = 0;
+        private OakSpeaking oakSpeaking;
+        private DispatcherTimer checkSpeechDoneTimer;
 
-        private bool playerChoseTutorial = false;
-        
-        private TaskCompletionSource<bool> yesButtonClickTaskCompletionSource;
-        
         public Fight(string selectedStarter)
         {
             InitializeComponent();
 
             Background.Opacity = 0.5;
-            
+
+            OakSpeechShow();
             MovingAnimation();
-            textAnimationTimer = new DispatcherTimer();
-            textAnimationTimer.Interval = TimeSpan.FromMilliseconds(85);
-            textAnimationTimer.Tick += TextAnimationTickWrapper;
-            StartSpeech();
             
-        }
-        
-        private void TextAnimationTickWrapper(object sender, EventArgs e)
-        {
-            _ = TextAnimationTick();
+            oakSpeaking = new OakSpeaking(tutorialQuestion);
+            oakSpeaking.OnSpeechUpdated += HandleSpeechUpdated;
+            oakSpeaking.StartSpeech();
+            
+            checkSpeechDoneTimer = new DispatcherTimer();
+            checkSpeechDoneTimer.Interval = TimeSpan.FromMilliseconds(100);
+            checkSpeechDoneTimer.Tick += CheckSpeechDone;
+            checkSpeechDoneTimer.Start();
         }
 
-        private async Task TextAnimationTick()
+        private void CheckSpeechDone(object sender, EventArgs e)
         {
-            if (currentLinesIndex < tutorial.Count)
+            if (oakSpeaking.SpeechDone)
             {
-                if (!isLinesDone)
-                {
-                    SpeechText.Text = "";
-                    isLinesDone = true;
-                }
-                string currentSentence = tutorial[currentLinesIndex];
-                if (currentSpeechIndex < currentSentence.Length)
-                {
-                    SpeechText.Text += currentSentence[currentSpeechIndex];
-                    currentSpeechIndex++;
-                }
-                else
-                {
-                    isLinesDone = false;
-                    currentLinesIndex++;
-
-                    ShowButtons();
-                    if (currentLinesIndex == 2)
-                    {
-                        await WaitForYesButtonClickAsync();
-                    }
-                    else
-                    {
-                        currentSpeechIndex = 0;
-                        StartSpeech();
-                    }
-                }
+                checkSpeechDoneTimer.Stop();
+                ShowButtons();
+            }
+        }
+        private void HandleSpeechUpdated(object sender, string currentCharacter)
+        {
+            if (string.IsNullOrEmpty(currentCharacter) && oakSpeaking.currentLinesIndex < tutorialQuestion.Count - 1)
+            {
+                SpeechText.Text = string.Empty;
             }
             else
             {
-                textAnimationTimer.Stop();
+                SpeechText.Text += currentCharacter;
             }
         }
-
-
-        private async Task WaitForYesButtonClickAsync()
-        {
-            yesButtonClickTaskCompletionSource = new TaskCompletionSource<bool>();
-            await yesButtonClickTaskCompletionSource.Task;
-            yesButtonClickTaskCompletionSource = null;
-            StartSpeech();
-        }
+        
 
         private void OakSpeechShow()
         {
@@ -121,33 +92,7 @@ namespace game_trial_3.Pages
             NoTutorial.Visibility = Visibility.Collapsed;
         }
         
-        private void StartSpeech() 
-        {
-            
-            OakSpeechShow();
-            
-            textAnimationTimer.Start();
-            MovingAnimation();
-            
-            if (!speechAnimationStarted) //checks if the speech started or not
-            {
-                textAnimationTimer.Tick += (sender, e) =>
-                {
-                    if (currentLinesIndex >= tutorial.Count) 
-                    {
-                        textAnimationTimer.Stop();
-
-                        if (playerChoseTutorial)
-                        {
-                            currentLinesIndex = lastTutorialLineIndex;
-                        }
-                    }
-                };
-
-                speechAnimationStarted = true;
-            }
-            
-        }
+        
         
         private void MovingAnimation() // adds oak moving to make it look cool
         {
@@ -175,7 +120,6 @@ namespace game_trial_3.Pages
         {
             HideButtons();
             OakSpeechClose();
-            textAnimationTimer.Stop();
             OakSpeechClose();
             Background.Opacity = 1;
         }
@@ -183,10 +127,6 @@ namespace game_trial_3.Pages
         private void TutorialClick(object sender, RoutedEventArgs e)
         {
             HideButtons();
-            playerChoseTutorial = true;
-            lastTutorialLineIndex = currentLinesIndex;
-            yesButtonClickTaskCompletionSource?.SetResult(true);
-            StartSpeech();
         }
     }
 }

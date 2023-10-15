@@ -19,7 +19,7 @@ namespace game_trial_3
             return sb.ToString();
 
         }
-
+ 
         public static byte[] GetHash(string passwordString)
         {
             using (HashAlgorithm algorithm = SHA256.Create())

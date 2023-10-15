@@ -5,10 +5,12 @@ using System.Windows.Threading;
 public class OakSpeaking
 {
     private List<string> lines;
-    private int currentLinesIndex;
+    public int currentLinesIndex;
     private int currentSpeechIndex;
     private DispatcherTimer textAnimationTimer;
+    private bool speechAnimationStarted = false;
 
+    public bool SpeechDone { get; private set; }
     public event EventHandler<string> OnSpeechUpdated;
 
     public OakSpeaking(List<string> speechLines)
@@ -18,13 +20,26 @@ public class OakSpeaking
         currentSpeechIndex = 0;
 
         textAnimationTimer = new DispatcherTimer();
-        textAnimationTimer.Interval = TimeSpan.FromMilliseconds(20);
+        textAnimationTimer.Interval = TimeSpan.FromMilliseconds(0.5);
         textAnimationTimer.Tick += TextAnimationTick;
     }
 
     public void StartSpeech()
     {
         textAnimationTimer.Start();
+
+        if (!speechAnimationStarted) // checks if the speech started or not
+        {
+            textAnimationTimer.Tick += (sender, e) =>
+            {
+                if (currentLinesIndex >= lines.Count) // once speech has ended, set SpeechDone to true
+                {
+                    textAnimationTimer.Stop();
+                    SpeechDone = true;
+                }
+            };
+            speechAnimationStarted = true;
+        }
     }
 
     private void TextAnimationTick(object sender, EventArgs e)
@@ -39,14 +54,10 @@ public class OakSpeaking
             }
             else
             {
+                OnSpeechUpdated?.Invoke(this, ""); // Display an empty string for line breaks
                 currentLinesIndex++;
                 currentSpeechIndex = 0;
-                OnSpeechUpdated?.Invoke(this, "");
             }
-        }
-        else
-        {
-            textAnimationTimer.Stop();
         }
     }
 }
