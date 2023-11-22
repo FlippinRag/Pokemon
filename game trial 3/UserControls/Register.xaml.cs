@@ -77,9 +77,21 @@ namespace game_trial_3.UserControls
         {
             string playerName = NewtxtPlayer.Text;
             string password = NewtxtPass.Password;
+            
             if (playerName.Length < 3 || password.Length < 3)
             {
                 MessageBox.Show("Either Player name or password is less than 3 characters... too short try again!");
+                return;
+            }
+            if (string.IsNullOrEmpty(playerName) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Bad boy! Fill the actual login and password");
+                return;
+            }
+            if (playerName.Contains(" ") || password.Contains(" "))
+            {
+                MessageBox.Show("Please dont have spaces in the login or password please!");
+                return;
             }
             else
             {
@@ -95,11 +107,13 @@ namespace game_trial_3.UserControls
                     else
                     {
                         MessageBox.Show("An error occurred while registering the player.");
+                        return;
                     }
                 }
                 else
                 {
                     MessageBox.Show("Player name is already taken. Please choose a different name.");
+                    return;
                 }
             }
             
